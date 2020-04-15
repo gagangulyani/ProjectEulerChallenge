@@ -7,7 +7,7 @@
 + [Javascript](solution.js)
 + [C++](solution.cpp)
 
-### Solutions [Optimized] [TODO]
+### Solutions [Optimized] (3x faster)
 + [Python](solution_optimized.py)
 + [Javascript](solution_optimized.js)
 + [C++](solution_optimized.cpp)
