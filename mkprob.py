@@ -1,6 +1,6 @@
 """
 This Script Creates Problem Directory along with
-it's Solution.md containing Link to Solution of that particular
+it's Solutions.md containing Link to Solution of that particular
 problem in different languages.
 """
 
@@ -32,31 +32,35 @@ def create_dir(dir_path: str, sol_path: str, number: int) -> None:
     create_solution(dir_path, sol_path, number)
 
 
+@border
 def create_markdown(path: str, number: int) -> None:
     """
         This function creates Solutions.md in Problem 
         Directory
     """
-    markdown = f"# Problem #{number}\n"
+    markdown = f"# Problem #{number}\n\n\n"
 
     markdown_content = """
-#### Solutions
+### Solutions
 + [Python](solution.py)
 + [Javascript](solution.js)
 + [C++](solution.cpp)
 
-#### Solutions [Optimized] [TODO]
+### Solutions [Optimized] [TODO]
 + [Python](solution_optimized.py)
 + [Javascript](solution_optimized.js)
 + [C++](solution_optimized.cpp)
     """
+    if not isfile(path):
+        with open(path, 'w') as f:
+            f.write(markdown)
+            f.write(markdown_content)
+            print('"Solutions.md" Created!')
+    else:
+        print('"Solutions.md" Already Exists!')
 
-    with open(path, 'w') as f:
-        f.write(markdown)
-        f.write(markdown_content)
-        print('"Solution.md" Created!')
 
-
+@border
 def create_solution(dir_path: str, sol_path: str, number: int) -> None:
     """
         This function creates Solution boilerplate
@@ -71,18 +75,25 @@ def create_solution(dir_path: str, sol_path: str, number: int) -> None:
 
         # Program file name with Path
         scr_name = join(dir_path, f'solution.{ext}')
+        scr_name2 = join(dir_path, f'solution_optimized.{ext}')
 
         if isfile(scr_name):
             # If file exists, then don't touch it
             print(f'"solution.{ext}" Already Exists!')
-            continue
+        else:
+            # Else Create File
+            open(scr_name, 'w').close()
+            print(f'"solution.{ext}" Created!')
 
-        # Else Create File
-        open(scr_name, 'w').close()
-        print(f'"solution.{ext}" Created!')
+        if isfile(scr_name2):
+            # If file exists, then don't touch it
+            print(f'"solution_optimized.{ext}" Already Exists!')
+        else:
+            open(scr_name2, 'w').close()
+            print(f'"solution_optimized.{ext}" Created!')
 
     create_markdown(sol_path, number)
-    print('Solution Boilerplate Created!')
+    print(f'Solution Boilerplate for Problem {number} Created!')
 
 
 # Creating Argument Parser object
@@ -137,34 +148,8 @@ for number in numbers:
 
     if isdir(dir_name):
         print(f'\nDirectory "{dir_name}" Already Exists...')
+        create_solution(dir_name, sol_path, number)
 
-        if isfile(sol_path):
-            print(f'error : Cannot Make File: {sol_file_name}')
-            print('reason: Already Exists...')
-
-            while prompt == True:
-                # Ask if User wants to Overwrite Solutions.md
-                prompt = input(
-                    f"Overwrite {sol_file_name}? [Y/n]: "
-                ).lower().strip()
-                # strip whitespaces and convert it to lowercase
-
-                if prompt in ['y', 'n']:
-
-                    if prompt == 'y':
-                        # If y -> Overwrite Solution.md
-                        create_solution(dir_name, sol_path, number)
-                        prompt = False
-
-                    elif prompt == 'n':
-                        # If n -> Skip Overwriting
-                        break
-
-                    else:
-                        # keep Asking
-                        prompt = True
-        else:
-            create_solution(dir_name, sol_path, number)
     else:
         print("\n")
         create_dir(dir_name, sol_path, number)
