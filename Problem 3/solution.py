@@ -12,7 +12,7 @@ def largest_factor(number) :
     """
 
     factor = 2
-    last_factor = factor
+    last_factor = 1
 
     while (number > 1):
         if (number % factor == 0):
