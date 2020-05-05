@@ -26,3 +26,9 @@ What is the largest prime factor of the number 600851475143 ?
 Find the largest palindrome made from the product of two 3-digit numbers.
 
 ##### [Solution](Problem%204/Solutions.md)
+
+### Problem 5.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+##### [Solution](Problem%205/Solutions.md)
