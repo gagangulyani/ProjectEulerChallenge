@@ -12,7 +12,7 @@ function lcm(a, b){
     return (a * b) / gcd(a, b);
 }
 
-var result = 1
+var result = 1;
 
 for (let i = 1; i <= 20; i++){
     result = lcm(result, i);  
