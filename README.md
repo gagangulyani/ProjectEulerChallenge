@@ -32,3 +32,15 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
 ##### [Solution](Problem%205/Solutions.md)
+
+### Problem 6.
+
+Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+
+##### [Solution](Problem%206/Solutions.md)
+
+### Problem 7.
+
+What is the 10,001st prime number?
+
+##### [Solution](Problem%207/Solutions.md)
